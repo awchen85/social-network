@@ -4,5 +4,22 @@
     "mongoose": "^6.7.3",
     "node": "^19.1.0",
     "validator": "^13.7.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "social-network",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awchen85/social-network.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awchen85/social-network/issues"
+  },
+  "homepage": "https://github.com/awchen85/social-network#readme"
 }

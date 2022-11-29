@@ -12,17 +12,23 @@ const UserSchema = new Schema(
         email: {
             type: String,
             unique: true,
-            required: true,
-            validate:[ isEmail, 'invalid email' ]
+            required: [true, "Email required"],
+            trim: true,
+            validate: {
+                validator: () => function(v) {
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+            },
+            message: "Please enter a valid email"
+            },
         },
-        thoughts: {
+        thoughts: [{
             type: Schema.Types.ObjectId,
             ref: 'Thoughts'
-        },
-        friends: {
+        }],
+        friends: [{
             type: Schema.Types.ObjectId,
-            ref: 'user'
-        }
+            ref: 'User'
+        }]
     },
     {
         toJSON: {
@@ -34,10 +40,7 @@ const UserSchema = new Schema(
 );
 
 UserSchema.virtual('friendCount').get(function() {
-    return this.friends.reduce(
-        (total, friends) => total + friends.length + 1,
-        0
-    );
+    return this.friends.length
 });
 
 const User = model('User', UserSchema);
