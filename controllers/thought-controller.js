@@ -9,7 +9,7 @@ const thoughtController = {
         .then(dbThoughtData => res.json(dbThoughtData))
         .catch(err => {
             console.log(err);
-            res.sendStatus(400);
+            res.status(400).json(err);
         });
     },
     //get one thought by ID
