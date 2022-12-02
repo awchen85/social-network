@@ -44,7 +44,7 @@ const thoughtController = {
         .then(({ _id }) => {
             return User.findOneAndUpdate(
                 { _id: body.userId },
-                { $push: { thoughts: _id } },
+                { $push: { thought: _id } },
                 { new: true }
             );
         })
@@ -79,7 +79,7 @@ const thoughtController = {
         }
         return User.findOneAndUpdate(
           { _id: params.UserId },
-          { $pull: { thoughts: params.thoughtId } },
+          { $pull: { thought: params.thoughtId } },
           { new: true }
         );
       })
